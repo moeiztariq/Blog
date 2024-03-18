@@ -1,12 +1,16 @@
 import React from "react";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import BlogPosts from "./views/BlogPosts";
 import BlogDetail from "./views/BlogDetail";
 import PropertySearch from "./views/PropertySearch";
 
 const Routes = () => {
   const routes = createBrowserRouter([
+    {
+      path: '/',
+      element: <Navigate to="/blogs" />,
+    },
     {
       path: "/blogs",
       element: <BlogPosts />,
