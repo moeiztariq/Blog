@@ -39,31 +39,33 @@ const PropertySearch = () => {
           <Button variant="contained">Go to Blogs</Button>
         </Link>
       </div>
-      <div className="table">
-        <div className="w-50">
-          <TextField
-            id="outlined-basic"
-            label="Search"
-            variant="outlined"
-            fullWidth
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-        </div>
-        <div className="flex">
-          <FilterCard
-            handlePropertyTypeClick={handlePropertyTypeClick}
-            selectedType={selectedType}
-          />
-          <DataTable
-            row={rows}
-            columns={columns}
-            filteredRows={filteredRows}
-            searchQuery={searchQuery}
-            handleRowClick={handleRowClick}
-            selected={selected}
-            selectedProperties={selectedProperty}
-          />
+      <div className="tb-view">
+        <div className="table">
+          <div className="w-50">
+            <TextField
+              id="outlined-basic"
+              label="Search"
+              variant="outlined"
+              fullWidth
+              value={searchQuery}
+              onChange={handleSearch}
+            />
+          </div>
+          <div className="flex">
+            <FilterCard
+              handlePropertyTypeClick={handlePropertyTypeClick}
+              selectedType={selectedType}
+            />
+            <DataTable
+              row={rows}
+              columns={columns}
+              filteredRows={filteredRows}
+              searchQuery={searchQuery}
+              handleRowClick={handleRowClick}
+              selected={selected}
+              selectedProperties={selectedProperty}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -7,14 +7,18 @@
     padding-top: 10rem;
 
 }
-
+.tb-view{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .nav-to{
     display: flex;
     justify-content: flex-end;
     padding: 30px 30px;
 }
 .w-50{
-    width: 50%;
+    width: 100%;
     display: flex;
     gap: 10px;
     
