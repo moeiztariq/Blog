@@ -4,24 +4,28 @@ import { useParams } from "react-router-dom";
 import { getSingleBlog } from "../../apis/api";
 import { parseSingleBlogData } from "../../utilities/parsers";
 import { useSelector } from "react-redux";
+import Loader from "../../components/Loader";
 
 const BlogDetail = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState();
   const blogsList = useSelector((state) => state.blogs.blogList);
-  const count = useSelector((state) => state.blogs);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     fetchBlogDetail();
   }, []);
 
   const fetchBlogDetail = async () => {
+    setLoading(true);
+
     try {
       const resp = await getSingleBlog(id);
       const parsedData = parseSingleBlogData(resp?.data);
       setBlog(parsedData);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -49,6 +53,7 @@ const BlogDetail = () => {
           <p>{blog?.article}</p>
         </div>
       </div>
+      <Loader loading={loading}/>
     </div>
   );
 };

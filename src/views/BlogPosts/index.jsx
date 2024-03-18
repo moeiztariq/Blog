@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "../../components/BlogCard.jsx";
 import { getBlogs } from "../../apis/api.js";
 import { parseBlogData } from "../../utilities/parsers/index.jsx";
@@ -12,8 +12,10 @@ import {
 } from "../../store/Actions/BlogActions/blogActions.js";
 import { isEmpty } from "lodash";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader/index.jsx";
 
 const BlogPosts = () => {
+  const [loading, setLoading] = useState(false);
   const blogsList = useSelector((state) => state.blogs.blogList);
   const dispatch = useDispatch();
 
@@ -24,12 +26,15 @@ const BlogPosts = () => {
   }, []);
 
   const fetchBlogsData = async () => {
+    setLoading(true);
     try {
       const resp = await getBlogs();
       const parsedData = parseBlogData(resp?.data);
       dispatch(setBlogList(parsedData));
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
   const handleViewCounter = (id) => {
@@ -54,6 +59,7 @@ const BlogPosts = () => {
           ))}
         </div>
       </div>
+      <Loader loading={loading} />
     </div>
   );
 };
