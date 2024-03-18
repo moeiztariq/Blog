@@ -1,0 +1,24 @@
+
+
+.card {
+  background: red;
+  padding: 14px 4rem;
+  border-radius: 10px;
+  background: #e7eaf6;;
+  height: 100%;
+  width: 100%;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+  }
+  li{
+    color: black;
+  }
+  .bold{
+    font-weight: bold;
+  }
+}
